@@ -32,10 +32,10 @@ public class BinarySearchTree {
 	
 	
 
-	public void insertNode(int bNo, String courseNew) {
+	public Node insertNode(int bNo, String courseNew) {
 		// TODO Auto-generated method stub
 		root = addRecursive(root, bNo, courseNew);
-		inorder(root);
+		return root;
 		
 	}
 	
@@ -45,7 +45,6 @@ public class BinarySearchTree {
 		}
 		inorder(root.left);
 		System.out.println(root.bNo+" "+ root.courseName );
-
 		inorder(root.right);
 	}
 	

@@ -1,0 +1,58 @@
+
+Assuming you are in the directory containing this README:
+
+## To clean:
+ant -buildfile src/build.xml clean
+
+-----------------------------------------------------------------------
+## To compile: 
+ant -buildfile src/build.xml all
+
+-----------------------------------------------------------------------
+## To run by specifying arguments from command line 
+## We will use this to run your code
+ant -buildfile src/build.xml run -Darg0=FIRST -Darg1=SECOND -Darg2=THIRD
+
+-----------------------------------------------------------------------
+
+## To create tarball for submission
+ant -buildfile src/build.xml tarzip or tar -zcvf aditya_tyagi_assign_2.tar.gz aditya_tyagi_assign_2
+
+-----------------------------------------------------------------------
+
+"I have done this assignment completely on my own. I have not copied
+it, nor have I given my solution to anyone else. I understand that if
+I am involved in plagiarism or cheating I will have to sign an
+official form that I have cheated and that this form will be stored in
+my official university record. I also understand that I will receive a
+grade of 0 for the involved assignment for my first offense and that I
+will receive a grade of F for the course for any additional
+offense.”
+
+[Date: 6/28/2018]
+
+-----------------------------------------------------------------------
+
+Assumptions in the Assignment regarding the input file:
+
+1. If we have two green lights, EX: traffic lights at the East and the traffic light at
+the West are green, then we first pass the cars from the east and then from the west.
+
+2. Signal of the traffic lights changes after the intersection of two cars.
+
+3. We don't have any while loop or menu driven code, So TA needs to change the input variables in the input.txt to  test all other conditions. Example: if TA wants to test the condition when traffic light at north and east are green after testing the condition when traffic light at the East is green, then he has to change the field of North from "red" to "green" in the input.txt.
+
+4.There is no yellow light.
+ 
+-----------------------------------------------------------------------
+
+Provide list of citations (urls, etc.) from where you have taken code
+(if any).
+
+
+
+
+
+
+
+
