@@ -1,5 +1,6 @@
 package studentCoursesBackup.myTree;
 
+//Reference of BST "http://baeldung.com/java-binary-tree"
 public class BinarySearchTree {
 
 	Node root;

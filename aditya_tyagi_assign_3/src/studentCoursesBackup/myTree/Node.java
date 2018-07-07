@@ -2,7 +2,7 @@ package studentCoursesBackup.myTree;
 
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Node {
 	public int bNo;
@@ -22,7 +22,7 @@ public class Node {
 		return bNo;
 	}
 
-	public ArrayList getCourseName() {
+	public ArrayList<String> getCourseName() {
 		return courseName;
 	}
 
