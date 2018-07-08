@@ -2,3 +2,5 @@
 1530905507908	Rename local variable 'courseName'
 1530976241246	Delete element
 1530988140662	Rename field 'inputFile'
+1531005498281	Rename method 'containsNodeRecursive'
+1531005515222	Rename local variable 'value'

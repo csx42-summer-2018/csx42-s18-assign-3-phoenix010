@@ -48,5 +48,59 @@ public class BinarySearchTree {
 		System.out.println(root.bNo+" "+ root.courseName );
 		inorder(root.right);
 	}
+	public boolean searchNode(Node root, int bno) {
+	    if (root == null) {
+	        return false;
+	    } 
+	    if (bno == root.bNo) {
+	        return true;
+	    } 
+	    return bno < root.bNo
+	      ? searchNode(root.left, bno)
+	      : searchNode(root.right, bno);
+	}
+
+	private Node deleteRecursive(Node current, int value) {
+		if(current == null)
+			return null;
+		
+		if(value == current.bNo) {
+			//....Node to delete found
+			
+			// a node has no children 
+			if (current.left == null && current.right == null) {
+			    return null;
+			}
+			// a node that has exactly one child
+			if (current.right == null) {
+			    return current.left;
+			}
+			 if (current.left == null) {
+			    return current.right;
+			}
+			 // a node that has two children
+			 int smallestValue = findSmallestValue(current.right);
+			 current.bNo = smallestValue;
+			 current.right = deleteRecursive(current.right, smallestValue);
+			 return current;
+		      }
+		  
+		
+		if(value < current.bNo) {
+			current.left = deleteRecursive(current.left, value);
+			return current;
+		}
+		current.right = deleteRecursive(current.right, value);
+		return current;
+	}
+	
+	public void deleteNode(Node root, int value) {
+		deleteRecursive(root, value);
+	}
+	
+	private int findSmallestValue(Node root) {
+	    return root.left == null ? root.bNo : findSmallestValue(root.left);
+	}
+
 	
 }
