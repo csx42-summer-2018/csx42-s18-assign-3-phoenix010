@@ -101,6 +101,32 @@ public class BinarySearchTree {
 	private int findSmallestValue(Node root) {
 	    return root.left == null ? root.bNo : findSmallestValue(root.left);
 	}
-
 	
+	public void deleteCourses(Node node, int bNo, String course) {
+		System.out.println("Deletion of Course");
+		node = move(node,bNo);
+		System.out.println(node.getbNo());
+		if(node.courseName.contains(course)) {
+			System.out.println("LOL");
+			node.courseName.remove(course);
+			inorder(node);
+			System.out.println("*******************");
+		}
+		else {
+			System.out.println("Course is not present");
+		}
+    }
+	private Node move(Node root, int bNo) {
+	    System.out.println("I am ");
+	    if (bNo == root.bNo) {
+	        return root;   //LINE 12
+	    }
+	    if (bNo > root.bNo) {
+	        return move(root.right,bNo);
+	    }
+	    return move(root.left,bNo);
+	}
+		
 }
+	
+

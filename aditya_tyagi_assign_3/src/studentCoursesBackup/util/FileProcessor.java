@@ -46,7 +46,7 @@ public class FileProcessor {
 	}
 
 	public String readLine() throws IOException {
-		String line ="";
+		String line;
 		try{
 		while((line = this.getBufferedReader().readLine()) != null) {
 			return line;
