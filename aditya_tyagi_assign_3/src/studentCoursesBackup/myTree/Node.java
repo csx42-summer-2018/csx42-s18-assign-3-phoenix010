@@ -34,8 +34,4 @@ public class Node {
 		return right;
 	}
 	
-//	 public static Node createNode(int bNo, String courseName) {
-//	        return new Node(bNo, courseName);
-//	    }
-	
 }

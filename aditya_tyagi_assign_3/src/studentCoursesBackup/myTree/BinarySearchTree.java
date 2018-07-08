@@ -34,7 +34,6 @@ public class BinarySearchTree {
 	
 
 	public Node insertNode(int bNo, String courseNew) {
-		// TODO Auto-generated method stub
 		root = addRecursive(root, bNo, courseNew);
 		return root;
 		
@@ -103,23 +102,23 @@ public class BinarySearchTree {
 	}
 	
 	public void deleteCourses(Node node, int bNo, String course) {
-		System.out.println("Deletion of Course");
+//		System.out.println("Deletion of Course");
 		node = move(node,bNo);
-		System.out.println(node.getbNo());
+//		System.out.println(node.getbNo());
 		if(node.courseName.contains(course)) {
-			System.out.println("LOL");
+//			System.out.println("LOL");
 			node.courseName.remove(course);
-			inorder(node);
-			System.out.println("*******************");
+//			inorder(node);
+//			System.out.println("*******************");
 		}
-		else {
-			System.out.println("Course is not present");
-		}
+//		else {
+//			System.out.println("Course is not present");
+//		}
     }
 	private Node move(Node root, int bNo) {
-	    System.out.println("I am ");
+//	    System.out.println("I am ");
 	    if (bNo == root.bNo) {
-	        return root;   //LINE 12
+	        return root;   
 	    }
 	    if (bNo > root.bNo) {
 	        return move(root.right,bNo);
