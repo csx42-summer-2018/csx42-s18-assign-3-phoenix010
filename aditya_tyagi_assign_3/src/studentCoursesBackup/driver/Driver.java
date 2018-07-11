@@ -4,18 +4,24 @@ import java.io.IOException;
 
 import java.util.Scanner;
 
-import studentCoursesBackup.myTree.BinarySearchTree;
+
+
 import studentCoursesBackup.myTree.Node;
 import studentCoursesBackup.util.FileProcessor;
+import studentCoursesBackup.util.TreeBuilder;
 
 public class Driver {
-	static BinarySearchTree bst = new BinarySearchTree();
+	static TreeBuilder bst = new TreeBuilder();
 	private static Scanner scanner = new Scanner(System.in);
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException,CloneNotSupportedException{
 		System.out.println("Checking BST with user input");
-
-		Node node = null;
 		
+		
+		Node node = null;
+		Node backup_Node_1=null;
+		Node backup_Node_2 = null;
+		
+		//will need try-catch block
 		//will need try-catch block
 		String input = args[0];
 		System.out.println(input);
@@ -28,8 +34,16 @@ public class Driver {
 			
 			String splitLine[] = line.split(":");
 			int value = Integer.parseInt(splitLine[0]);
-			node = bst.insertNode(value, splitLine[1]); 
+			node = bst.insertNode(node,value, splitLine[1]); 
 		}
+		bst.inorder(node);
+		
+		
+//		System.out.println();
+//		bst.inorder(backup_Node_1);
+//		System.out.println();
+//		bst.inorder(backup_Node_2);
+
 		
 		/**
 		 * @ Hardcoded inputs
@@ -45,8 +59,14 @@ public class Driver {
 		System.out.println("Aditya");
 		
 		*/
-		bst.inorder(node);		
 		
+		
+		
+//		System.out.println("************************");
+//		bst.inorder(backup_Node_1);
+//		System.out.println("************************");
+//		bst.inorder(backup_Node_2);
+		/*
 		System.out.println("Code for Deletion");
 		String delete = args[1];
 		FileProcessor file1 = new FileProcessor(delete);
@@ -58,7 +78,7 @@ public class Driver {
 			del(node,splitLine1[0], splitLine1[1]); 
 		}
 		bst.inorder(node);
-//		searchBno(node);
+		searchBno(node);
 		}
 	
 	public static void del(Node node, String bNo,String courseName) {
@@ -78,20 +98,9 @@ public class Driver {
 	
 
 	}
+	*/
 	
-	public static void searchBno(Node node) {
-		System.out.println("Enter the Bno you want to search");
-		String value = scanner.nextLine();
-		try {
-			int val = Integer.parseInt(value);
-			if(bst.searchNode(node,val)) 
-				System.out.println("Bno is in our database");
-			else
-				System.out.println("Bno is not in our database");
-
-		}catch(NumberFormatException eq) {
-			System.out.println("Invalid Input. You cant input characters. You need to type integers");
-		}
-		
-	}
+	
+	
+  }
 }
