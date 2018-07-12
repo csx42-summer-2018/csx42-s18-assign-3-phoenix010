@@ -9,7 +9,7 @@ public class TreeBuilder {
 	
 	private Node addRecursive(Node current, int value, String courseNew) {
 	    if (current == null) {
-	    	current = new Node(value);
+	    	current = new Node(value,null,null);
 	    	current.courseName.add(courseNew);
 	    	return current;
 //	        return new Node(value);
@@ -42,11 +42,13 @@ public class TreeBuilder {
 	
 	public void inorder(Node root) {
 		if(root == null) {
-			return;
+			return ;
 		}
 		inorder(root.left);
 		System.out.println(root.bNo+" "+ root.courseName );
 		inorder(root.right);
+		
+		
 	}
 	public boolean searchNode(Node root, int bno) {
 	    if (root == null) {
@@ -59,72 +61,42 @@ public class TreeBuilder {
 	      ? searchNode(root.left, bno)
 	      : searchNode(root.right, bno);
 	}
-
-	private Node deleteRecursive(Node current, int value) {
-		if(current == null)
-			return null;
-		
-		if(value == current.bNo) {
-			//....Node to delete found
-			
-			// a node has no children 
-			if (current.left == null && current.right == null) {
-			    return null;
-			}
-			// a node that has exactly one child
-			if (current.right == null) {
-			    return current.left;
-			}
-			 if (current.left == null) {
-			    return current.right;
-			}
-			 // a node that has two children
-			 int smallestValue = findSmallestValue(current.right);
-			 current.bNo = smallestValue;
-			 current.right = deleteRecursive(current.right, smallestValue);
-			 return current;
-		      }
-		  
-		
-		if(value < current.bNo) {
-			current.left = deleteRecursive(current.left, value);
-			return current;
-		}
-		current.right = deleteRecursive(current.right, value);
-		return current;
-	}
 	
-	public void deleteNode(Node root, int value) {
-		deleteRecursive(root, value);
-	}
-	
-	private int findSmallestValue(Node root) {
-	    return root.left == null ? root.bNo : findSmallestValue(root.left);
-	}
-	
-	public void deleteCourses(Node node, int bNo, String course) {
-//		System.out.println("Deletion of Course");
-		node = move(node,bNo);
-//		System.out.println(node.getbNo());
-		if(node.courseName.contains(course)) {
-//			System.out.println("LOL");
-			node.courseName.remove(course);
-//			inorder(node);
-//			System.out.println("*******************");
-		}
-//		else {
-//			System.out.println("Course is not present");
+	public Node deleteCourses(Node node, int bNo, String course) {
+////		Node node1 = move(node,bNo);
+//		if(node1.courseName.contains(course)) {
+//			 node1.courseName.remove(course);
 //		}
-    }
-	private Node move(Node root, int bNo) {
+//		return node1;
+		return null;
+	}
+	
+	public Node search(Node root, int bNo) {
+		if(root.bNo == bNo) {
+			return root;
+		}
+		if (bNo > root.bNo) {
+	        return search(root.right,bNo);
+	    }
+		
+		
+	    return search(root.left,bNo);
+	}
+	public Node move(Node root, int bNo,String course) {
 //	    System.out.println("I am ");
-	    if (bNo == root.bNo) {
-	        return root;   
+		if (bNo == root.bNo) {
+	    	if(root.courseName.contains(course))
+	    		root.courseName.remove(course);
+	        
+	    	return root;   
 	    }
-	    if (bNo > root.bNo) {
-	        return move(root.right,bNo);
+	    if (bNo > root.bNo && root.left!= null && root.right != null) {
+	        return move(root.right,bNo,course);
 	    }
-	    return move(root.left,bNo);
+	    if(root.left== null && root.right == null &&  root.bNo != bNo)
+			return root;
+		
+	    return move(root.left,bNo,course);
 	}
 		
 }

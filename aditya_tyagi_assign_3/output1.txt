@@ -1,0 +1,2 @@
+Code for Deletion
+/home/aditya/Desktop/delete.txt
