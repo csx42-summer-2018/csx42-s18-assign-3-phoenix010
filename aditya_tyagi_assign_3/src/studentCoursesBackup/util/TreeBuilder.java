@@ -1,12 +1,25 @@
 package studentCoursesBackup.util;
 
+import java.util.ArrayList;
+
+
+
 import studentCoursesBackup.myTree.Node;
 
 public class TreeBuilder {
+	ArrayList<Node>arrli;
+	ArrayList<Node>arrli1;
+	ArrayList<Node>arrli2;
 
-
-
+	public TreeBuilder() {
+		this.arrli = new ArrayList<Node>();
+		this.arrli1 = new ArrayList<Node>();
+		this.arrli2 = new ArrayList<Node>();
+	}
 	
+
+
+
 	private Node addRecursive(Node current, int value, String courseNew) {
 	    if (current == null) {
 	    	current = new Node(value,null,null);
@@ -40,15 +53,53 @@ public class TreeBuilder {
 		
 	}
 	
-	public void inorder(Node root) {
-		if(root == null) {
-			return ;
+	
+	
+	public  ArrayList<Node> inorderRecursive(Node root){
+		
+			if (root == null){
+				return null;
+			}else{
+				inorderRecursive(root.left);
+				arrli.add(root);
+				inorderRecursive(root.right);
+			}
+			return arrli;
 		}
-		inorder(root.left);
+	public  ArrayList<Node> inorderRecursive1(Node root){
+		
+		if (root == null){
+			return null;
+		}else{
+			inorderRecursive1(root.left);
+			arrli1.add(root);
+			inorderRecursive1(root.right);
+		}
+		return arrli1;
+	}
+	public  ArrayList<Node> inorderRecursive2(Node root){
+		
+		if (root == null){
+			return null;
+		}else{
+			inorderRecursive2(root.left);
+			arrli2.add(root);
+			inorderRecursive2(root.right);
+		}
+		return arrli2;
+	}
+	
+	
+	
+	public String printNodes(Node root) {
+		if(root == null) {
+			return "";
+		}
+		printNodes(root.left);
 		System.out.println(root.bNo+" "+ root.courseName );
-		inorder(root.right);
+		printNodes(root.right);
 		
-		
+		return "" ;
 	}
 	public boolean searchNode(Node root, int bno) {
 	    if (root == null) {
@@ -63,12 +114,12 @@ public class TreeBuilder {
 	}
 	
 	public Node deleteCourses(Node node, int bNo, String course) {
-////		Node node1 = move(node,bNo);
-//		if(node1.courseName.contains(course)) {
-//			 node1.courseName.remove(course);
-//		}
-//		return node1;
-		return null;
+		Node node1 = move(node,bNo);
+		if(node1.courseName.contains(course)) {
+			 node1.courseName.remove(course);
+		}
+		return node1;
+
 	}
 	
 	public Node search(Node root, int bNo) {
@@ -82,21 +133,15 @@ public class TreeBuilder {
 		
 	    return search(root.left,bNo);
 	}
-	public Node move(Node root, int bNo,String course) {
+	private Node move(Node root, int bNo) {
 //	    System.out.println("I am ");
 		if (bNo == root.bNo) {
-	    	if(root.courseName.contains(course))
-	    		root.courseName.remove(course);
-	        
-	    	return root;   
-	    }
-	    if (bNo > root.bNo && root.left!= null && root.right != null) {
-	        return move(root.right,bNo,course);
-	    }
-	    if(root.left== null && root.right == null &&  root.bNo != bNo)
-			return root;
-		
-	    return move(root.left,bNo,course);
-	}
+			 return root;   
+		}
+		if (bNo > root.bNo) {
+			return move(root.right,bNo);
+		}
+		return move(root.left,bNo);
+		}
 		
 }

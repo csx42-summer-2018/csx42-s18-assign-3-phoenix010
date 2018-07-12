@@ -110,6 +110,11 @@ public class Node implements Subject,Observer {
 	}
 
 @Override
+	public String toString() {
+		return "bNo=" + bNo + ", courseName=" + courseName ;
+	}
+
+@Override
 public Node[] notifyObservers(Node node, Node backup_Node_1, Node backup_Node_2, String subject,Mode m1) {// If you add return statement then this error will be removed.
 	
 //	System.out.println("Notifying for insertion");
